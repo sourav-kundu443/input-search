@@ -37,9 +37,7 @@ function App() {
     if (value.trim().length > 0) {
       if (value?.toLowerCase().includes(".")) {
         newQuery = value.toLowerCase().split(".")[1];
-        console.log({ newQuery });
         if (newQuery == "") {
-          console.log("jjjjj");
           countryName = value.toLowerCase().split(".")[0];
           let firstLetterCap = capitalizeFirstLetter(countryName);
 
@@ -53,7 +51,6 @@ function App() {
         }
       } else {
         newQuery = value;
-        console.log("false");
       }
     } else {
       newQuery = "";
@@ -73,7 +70,6 @@ function App() {
         onChange={(event) => handleSearch(event.target.value)}
       />
       {searchText &&
-        query &&
         data
           ?.filter((item) => item?.toLowerCase()?.includes(query.toLowerCase()))
           .map((item, index) => {
