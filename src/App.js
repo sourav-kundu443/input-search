@@ -25,6 +25,7 @@ const productData = [
 function App() {
   const [query, setQuery] = useState("");
   const [searchText, setSearchText] = useState("");
+  const [countryName, setCountryName] = useState("");
   const [data, setData] = useState(coutryData);
 
   const capitalizeFirstLetter = (string) => {
@@ -32,13 +33,12 @@ function App() {
   };
 
   const handleSearch = (value) => {
-    let countryName = "";
     let newQuery = "";
     if (value.trim().length > 0) {
       if (value?.toLowerCase().includes(".")) {
         newQuery = value.toLowerCase().split(".")[1];
         if (newQuery == "") {
-          countryName = value.toLowerCase().split(".")[0];
+          setCountryName(value.toLowerCase().split(".")[0]);
           let firstLetterCap = capitalizeFirstLetter(countryName);
 
           productData.reduce((arr, o) => {
