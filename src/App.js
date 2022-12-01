@@ -65,8 +65,8 @@ function App() {
             }
           }, arr);
         }, []);
+        setQuery("");
       } else {
-        let k = value.toLowerCase().split(" ");
         let spaceArray = value.toLowerCase().split(" ");
         // Here check last word entered is dot(.) or not.
         if (spaceArray[spaceArray.length - 1].includes(".")) {
@@ -75,6 +75,7 @@ function App() {
         } else setQuery(spaceArray[spaceArray.length - 1]);
       }
     } else {
+      setData(countryData);
       setSearchFullText("");
       setQuery("");
     }
@@ -108,21 +109,18 @@ function App() {
           width: "200px",
         }}
       >
-        {query &&
-          data
-            ?.filter((item) =>
-              item?.toLowerCase()?.includes(query.toLowerCase())
-            )
-            .map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  style={{ borderBottom: "1px solid #333", padding: "5px" }}
-                >
-                  <p>{item}</p>
-                </div>
-              );
-            })}
+        {data
+          ?.filter((item) => item?.toLowerCase()?.includes(query.toLowerCase()))
+          .map((item, index) => {
+            return (
+              <div
+                key={index}
+                style={{ borderBottom: "1px solid #333", padding: "5px" }}
+              >
+                <p>{item}</p>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
